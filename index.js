@@ -14,7 +14,7 @@ const countdown = async (start = init_count) => {
     }
 }
 
-const initGame = async() => {
+const initGame = async () => {
     print("hello pong!")
     raylib.InitWindow(setting.ScreenWidth, setting.ScreenHeight, setting.GameName)
     raylib.SetTargetFPS(setting.Frame)

@@ -14,6 +14,6 @@
 
 ### Build
 <div class="code-box">
-  <pre><code>npm build</code></pre>
+  <pre><code>npm run build</code></pre>
   <button onclick="copyCode(this)"></button>
 </div>
