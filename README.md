@@ -1,5 +1,5 @@
-# Library
-[Raylib](https://github.com/RobLoach/node-raylib)
+# Raylib
+[Library](https://github.com/RobLoach/node-raylib)
 <div class="code-box">
   <pre><code>npm install raylib</code></pre>
   <button onclick="copyCode(this)"></button>
