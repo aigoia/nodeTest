@@ -1,11 +1,11 @@
 const raylib = require('raylib')
-const settings = require('./setting.js')
-const print = require('./helper.js')
+const setting = require('./setting')
+const print = require('./print')
 
 const initGame = () => {
     print("hello pong!")
-    raylib.InitWindow(settings.ScreenWidth, settings.ScreenHeight, settings.GameName)
-    raylib.SetTargetFPS(settings.Frame)
+    raylib.InitWindow(setting.ScreenWidth, setting.ScreenHeight, setting.GameName)
+    raylib.SetTargetFPS(setting.Frame)
 }
 
 const updateGame = () => {
@@ -14,7 +14,7 @@ const updateGame = () => {
 
 const drawGame = () => {
     raylib.BeginDrawing()
-    raylib.ClearBackground(settings.Mint)
+    raylib.ClearBackground(setting.Mint)
     
     raylib.EndDrawing()    
 }
