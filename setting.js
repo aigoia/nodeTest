@@ -5,7 +5,7 @@ module.exports = {
     Frame: 60,
     ScreenWidth: 1280,
     ScreenHeight: 800,
-    CountTime: 0.3,
+    CountTime: 500,
     InitCount: 3,
 
     // color

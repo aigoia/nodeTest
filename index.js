@@ -10,7 +10,7 @@ const countdown = async (start = init_count) => {
         raylib.DrawText(`${i}`, (setting.ScreenWidth - setting.ScoreMargin) / 2, setting.ScreenHeight / 2 - setting.ScoreSize, setting.ScoreSize, setting.Mint)
 
         raylib.EndDrawing()
-        await new Promise(resolve => setTimeout(resolve, 1000))
+        await new Promise(resolve => setTimeout(resolve, setting.CountTime))
     }
 }
 
