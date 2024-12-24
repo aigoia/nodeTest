@@ -1,5 +1,6 @@
 const raylib = require('raylib')
 const setting = require('./setting')
+const print = require('./print')
 
 class Ball {
     constructor(x, y, radius, speedX, speedY) {
@@ -15,6 +16,18 @@ class Ball {
 
     Draw() {
         raylib.DrawCircle(this.x, this.y, this.radius, setting.Gold)
+    }
+
+    Update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.HandleWallCollision();
+    }
+
+    HandleWallCollision() {
+        if ((this.y - this.radius) <= 0 || (this.y + this.radius) >= setting.ScreenHeight) {
+            this.speedY = this.speedY * -1; 
+        }
     }
 }
 
