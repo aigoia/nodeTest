@@ -1,6 +1,9 @@
 const raylib = require('raylib')
 const setting = require('./setting')
 const print = require('./print')
+const Ball = require('./ball')
+
+const ball  = new Ball(setting.ScreenWidth / 2, setting.ScreenHeight / 2, setting.BallSize, setting.BallSpeed, setting.BallSpeed)
 
 const countdown = async (start = init_count) => {
     for (let i = start; i > 0; i--) {
@@ -29,6 +32,8 @@ const updateGame = () => {
 const drawGame = () => {
     raylib.BeginDrawing()
     raylib.ClearBackground(setting.Mint)
+
+    ball.Draw()
     
     raylib.EndDrawing()    
 }
