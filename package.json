@@ -1,0 +1,9 @@
+{
+    "dependencies": {
+        "raylib": "^0.14.0"
+    },
+    "scripts": {
+        "start": "node index.js",
+        "build": "npx pkg index.js --out-path dist --targets node18-linux-x64"
+    }
+}
