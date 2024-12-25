@@ -5,7 +5,7 @@
   <button onclick="copyCode(this)"></button>
 </div>
 
-# Quit start
+## Quit start
 ### Start
 <div class="code-box">
   <pre><code>npm start</code></pre>
