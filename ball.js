@@ -28,19 +28,12 @@ class Ball {
     }
 
     HandleWallCollision() {
-        if ((this.y - this.radius) <= 0 || (this.y + this.radius) >= setting.ScreenHeight) {
-            this.speedY = this.speedY * -1
-        }
+        this.speedY  = (this.y - this.radius) <= 0 || (this.y + this.radius) >= setting.ScreenHeight ? this.speedY * -1 : this.speedY
     }
 
     CheckOutOfBounds() {
-        if (this.x + this.radius >= setting.ScreenWidth) {
-            this.cpuScore = this.ResetBall(this.cpuScore) + 1
-        }
-        if (this.x - this.radius <= 0) {
-            this.playerScore = this.ResetBall(this.playerScore) + 1
-        }
-    
+        this.cpuScore = (this.x + this.radius <= 0) ? this.ResetBall(this.cpuScore) : this.cpuScore
+        this.playerScore = (this.x - this.radius >= setting.ScreenWidth) ? this.ResetBall(this.playerScore) : this.playerScore
         return this.out
     }
     
@@ -49,7 +42,7 @@ class Ball {
     
         let positions = [2]
         positions.push((this.cpuScore === this.playerScore) ? 1 : 2)
-        positions.push((this.cpuScore === this.layerScore) ? 3 : 2)
+        positions.push((this.cpuScore === this.playerScore) ? 3 : 2)
     
         print('start positions:', positions)
     
