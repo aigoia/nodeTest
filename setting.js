@@ -27,4 +27,4 @@ module.exports = {
     PlayerSpeed: 12,
     CpuSpeed: 6,
     BallSpeed: 7
-  };
+}
