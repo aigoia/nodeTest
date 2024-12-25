@@ -6,8 +6,8 @@ const Paddle = require('./paddle')
 const CpuPaddle = require('./cpuPaddle')
 
 const ball = new Ball(setting.ScreenWidth / 2, setting.ScreenHeight / 2, setting.BallSize, setting.BallSpeed, setting.BallSpeed)
-const player = new Paddle(setting.ScreenWidth - setting.PaddleWidth - setting.PaddleMargin, (setting.ScreenHeight - setting.PaddleHeight) / 2, setting.PaddleWidth, setting.PaddleHeight, setting.PlayerSpeed);
-const cpu = new CpuPaddle(setting.PaddleMargin, (setting.ScreenHeight - setting.PaddleHeight) / 2, setting.PaddleWidth, setting.PaddleHeight, setting.CpuSpeed);
+const player = new Paddle(setting.ScreenWidth - setting.PaddleWidth - setting.PaddleMargin, (setting.ScreenHeight - setting.PaddleHeight) / 2, setting.PaddleWidth, setting.PaddleHeight, setting.PlayerSpeed)
+const cpu = new CpuPaddle(setting.PaddleMargin, (setting.ScreenHeight - setting.PaddleHeight) / 2, setting.PaddleWidth, setting.PaddleHeight, setting.CpuSpeed)
 let initDone = false
 
 const countdown = async (start = setting.InitCount) => {
