@@ -10,7 +10,7 @@ const player = new Paddle(setting.ScreenWidth - setting.PaddleWidth - setting.Pa
 const cpu = new CpuPaddle(setting.PaddleMargin, (setting.ScreenHeight - setting.PaddleHeight) / 2, setting.PaddleWidth, setting.PaddleHeight, setting.CpuSpeed);
 let initDone = false
 
-const countdown = async (start = init_count) => {
+const countdown = async (start = setting.InitCount) => {
     for (let i = start; i > 0; i--) {
         raylib.BeginDrawing()
         raylib.ClearBackground(setting.Snow)
@@ -18,8 +18,8 @@ const countdown = async (start = init_count) => {
         raylib.DrawText(`${i}`, (setting.ScreenWidth - setting.ScoreMargin) / 2, setting.ScreenHeight / 2 - setting.ScoreSize, setting.ScoreSize, setting.Mint)
 
         if (initDone) {
-            raylib.DrawText(ball.cpuScore.toString(), setting.ScreenWidth / 4 - setting.ScoreMargin, setting.ScoreMargin, setting.ScoreSize, setting.Snow)
-            raylib.DrawText(ball.playerScore.toString(), (3 * setting.ScreenWidth) / 4 - setting.ScoreMargin, setting.ScoreMargin, setting.ScoreSize, setting.Snow)
+            raylib.DrawText(ball.cpuScore.toString(), setting.ScreenWidth / 4 - setting.ScoreMargin, setting.ScoreMargin, setting.ScoreSize, setting.Mint)
+            raylib.DrawText(ball.playerScore.toString(), (3 * setting.ScreenWidth) / 4 - setting.ScoreMargin, setting.ScoreMargin, setting.ScoreSize, setting.Mint)
         }
 
         raylib.EndDrawing()
@@ -36,10 +36,25 @@ const initGame = async () => {
     initDone = true
 }
 
+const checkGame = async () => {
+    if (ball.CheckOutOfBounds()) {
+        ball.out = false
+        await countdown()
+    }
+}
+
 const updateGame = () => {
     ball.Update()
     player.Update()
     cpu.Update(ball.y)
+
+    ball.speedX = raylib.CheckCollisionCircleRec(raylib.Vector2(ball.x, ball.y), ball.radius, 
+                    { x: player.x, y: player.y, width: player.width, height: player.height }) 
+                    ? ball.speedX * -1 : ball.speedX;
+
+    ball.speedX = raylib.CheckCollisionCircleRec(raylib.Vector2(ball.x, ball.y), ball.radius, 
+                    { x: cpu.x, y: cpu.y, width: cpu.width, height: cpu.height }) 
+                    ? ball.speedX * -1 : ball.speedX;
 }
 
 const drawGame = () => {
@@ -61,6 +76,7 @@ const drawGame = () => {
 const main = async () => {    
     await initGame()
     while (!raylib.WindowShouldClose()) {
+        await checkGame()
         updateGame()
         drawGame()
     }
